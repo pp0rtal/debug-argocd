@@ -1,0 +1,30 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: testpresync
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-options: Replace=true,Force=true
+spec:
+  template:
+    metadata:
+      # labels:
+      #   - 
+      # annotations:
+      #   - 
+    spec:
+      restartPolicy: Never
+      volumes:
+        - name: platform-credentials
+          secret:
+            defaultMode: 420
+            secretName: platform-credentials-env
+      containers:
+      - name: nginxpresyncdemo
+        image: nginx
+        command:
+          - "sleep"
+          - "120"
+
