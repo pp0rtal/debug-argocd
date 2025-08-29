@@ -12,7 +12,7 @@ spec:
     path: argo
   destination:
     server: https://kubernetes.default.svc
-    namespace: debug_argo
+    namespace: debug-argo
 
   syncPolicy:
     syncOptions:

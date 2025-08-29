@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-  namespace: debug_argo
+  namespace: debug-argo
   labels:
     app: nginx
 spec:
@@ -11,7 +11,7 @@ spec:
     matchLabels:
       app: nginx
   template:
-    namespace: debug_argo
+    namespace: debug-argo
     metadata:
       labels:
         app: nginx
