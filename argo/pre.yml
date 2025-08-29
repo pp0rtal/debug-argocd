@@ -6,7 +6,8 @@ metadata:
   namespace: debug-argo
   annotations:
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-options: Replace=true,Force=true
 spec:
   template:
     spec:
