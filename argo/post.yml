@@ -1,0 +1,22 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: testpresync
+  namespace: debug-argo
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  template:
+    spec:
+      containers:
+      - name: postsync-container
+        image: alpine:latest
+        command: ["/bin/sh", "-c"]
+        args:
+          - echo "Running PostSync job...";
+            sleep 5;
+            echo "PostSync job completed!";
+      restartPolicy: Never
+  backoffLimit: 2
