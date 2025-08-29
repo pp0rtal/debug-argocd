@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-  namespace: default
   labels:
     app: nginx
 spec:
@@ -12,7 +11,6 @@ spec:
       app: nginx
   template:
     metadata:
-      namespace: default
       labels:
         app: nginx
     spec:
