@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mongoexpress-demo-app
+  name: argo-debug
   namespace: argocd
 spec:
   project: default
@@ -12,7 +12,7 @@ spec:
     path: argo
   destination:
     server: https://kubernetes.default.svc
-    namespace: debugargo
+    namespace: debug_argo
 
   syncPolicy:
     syncOptions:
