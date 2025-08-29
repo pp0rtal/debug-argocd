@@ -16,7 +16,7 @@ spec:
         command: ["/bin/sh", "-c"]
         args:
           - echo "Running PreSync job...";
-            sleep 10;
+            sleep 5;
             echo "PreSync job completed!";
       restartPolicy: Never
   backoffLimit: 2
