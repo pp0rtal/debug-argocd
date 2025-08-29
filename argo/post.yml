@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: testpresync
+  name: testpostsync
   namespace: debug-argo
   annotations:
     argocd.argoproj.io/hook: PostSync
