@@ -20,7 +20,7 @@ spec:
         image: nginx:1.14.2
         command: ["/bin/sh", "-c"]
         args:
-          - echo "App is running v6";
+          - echo "App is running v7";
             sleep 99999999999;
             echo "backoff";
         ports:
