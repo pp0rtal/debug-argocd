@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+data:
+  service.webhook.on-deployed-webhook: |
+    url: https://semiserious-akilah-avifaunally.ngrok-free.dev
+    headers:
+    - name: "Content-Type"
+      value: "application/json"
+
+  template.on-deployed-template: |
+    webhook:
+      on-deployed-webhook:
+        method: POST
+        body: |
+              {{toJson .app.status.operationState.syncResult}}
+
+
+  trigger.on-deployed-trigger: |
+    when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
+    oncePer: app.status.sync.revision
+    send: [on-deployed-template]
