@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argo-debug-set
+spec:
+  goTemplate: true
+  generators:
+    - git:
+        repoURL: https://github.com/pp0rtal/debug-argocd
+        revision: HEAD
+        files:
+          - path: "*/config.json"
+  template:
+    metadata:
+      name: "argo-debug-{{ .path.basename }}"
+      namespace: argocd
+      annotations: {{- .annotation | toYaml | nindent 8 }}
+    spec:
+      project: default
+
+      source:
+        repoURL: "https://github.com/pp0rtal/debug-argocd"
+        targetRevision: HEAD
+        path: {{ .path.path }}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: debug-argo
+
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+
+        automated:
+          selfHeal: true
+          prune: true
