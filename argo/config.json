@@ -1,6 +1,7 @@
 {
     "test": "value",
     "annotations": {
-        "notifications.argoproj.io/subscribe.on-deployed-trigger.on-deployed-webhook": ""
+        "notifications.argoproj.io/subscribe.on-deployed-trigger.on-deployed-webhook": "",
+        "toto": "titi"
     }
 }

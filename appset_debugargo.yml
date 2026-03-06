@@ -14,8 +14,6 @@ spec:
     metadata:
       name: "argo-debug-{{ .path.basename }}"
       namespace: argocd
-#      annotations:
-#        toto: titi
     spec:
       project: default
 
@@ -34,6 +32,6 @@ spec:
         automated:
           selfHeal: true
           prune: true
-#  templatePatch: |
-#    metadata:
-#      annotations: {{ .annotations | toYaml | nindent 8 }}
+  templatePatch: |
+    metadata:
+      annotations: {{ .annotations | toYaml | nindent 8 }}
