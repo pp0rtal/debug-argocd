@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: "https://github.com/pp0rtal/debug-argocd"
     targetRevision: HEAD
-    path: argo
+    path: argo/k8s
   destination:
     server: https://kubernetes.default.svc
     namespace: debug-argo

@@ -14,14 +14,15 @@ spec:
     metadata:
       name: "argo-debug-{{ .path.basename }}"
       namespace: argocd
-      annotations: {{- .annotation | toYaml | nindent 8 }}
+#      annotations:
+#        toto: titi
     spec:
       project: default
 
       source:
         repoURL: "https://github.com/pp0rtal/debug-argocd"
         targetRevision: HEAD
-        path: {{ .path.path }}
+        path: "{{ .path.path }}/k8s"
       destination:
         server: https://kubernetes.default.svc
         namespace: debug-argo
@@ -33,3 +34,6 @@ spec:
         automated:
           selfHeal: true
           prune: true
+#  templatePatch: |
+#    metadata:
+#      annotations: {{ .annotations | toYaml | nindent 8 }}
