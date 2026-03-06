@@ -1,4 +1,5 @@
 {
+    "test": "value",
     "annotations": {
         "notifications.argoproj.io/subscribe.on-deployed-trigger.on-deployed-webhook": ""
     }
