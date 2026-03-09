@@ -1,7 +1,6 @@
 {
     "test": "value",
     "annotations": {
-        "notifications.argoproj.io/subscribe.on-deployed-trigger.on-deployed-webhook": "",
-        "toto": "titi"
+        "notifications.argoproj.io/subscribe.sync-operation.github-ping-trello": ""
     }
 }

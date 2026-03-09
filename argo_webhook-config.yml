@@ -3,21 +3,26 @@ kind: ConfigMap
 metadata:
   name: argocd-notifications-cm
 data:
-  service.webhook.on-deployed-webhook: |
-    url: https://semiserious-akilah-avifaunally.ngrok-free.dev
+  service.webhook.github-ping-trello: |
+    url: https://e7d3-78-120-131-110.ngrok-free.app
     headers:
     - name: "Content-Type"
       value: "application/json"
 
-  template.on-deployed-template: |
+  template.sync-operation: |
     webhook:
-      on-deployed-webhook:
+      github-ping-trello:
         method: POST
         body: |
-              {{toJson .app.status.operationState.syncResult}}
+          {{ toJson .app }}
 
-
-  trigger.on-deployed-trigger: |
-    when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
-    oncePer: app.status.sync.revision
-    send: [on-deployed-template]
+  trigger.sync-operation: |
+    - when: app.status?.operationState?.phase in ['Succeeded']
+      oncePer: app.status?.operationState?.syncResult?.revision
+      send: [sync-operation]
+    - when: app.status?.operationState?.phase in ['Running']
+      oncePer: app.status?.operationState?.syncResult?.revision
+      send: [sync-operation]
+    - when: app.status?.operationState?.phase in ['Error', 'Failed']
+      oncePer: app.status?.operationState?.syncResult?.revision
+      send: [sync-operation]
