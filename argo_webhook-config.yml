@@ -3,18 +3,20 @@ kind: ConfigMap
 metadata:
   name: argocd-notifications-cm
 data:
-  service.webhook.github-ping-trello: |
-    url: https://e7d3-78-120-131-110.ngrok-free.app
+  service.webhook.github-platform-ping-trello: |
+    url: https://api.github.com/repos/360Learning/GitStats_Sandbox/dispatches
     headers:
     - name: "Content-Type"
       value: "application/json"
+    - name: Authorization
+      value: Bearer $github-platform-token
 
   template.sync-operation: |
     webhook:
-      github-ping-trello:
+      github-platform-ping-trello:
         method: POST
         body: |
-          {{ toJson .app }}
+          {{ toJson .app.status.operationState }}
 
   trigger.sync-operation: |
     - when: app.status?.operationState?.phase in ['Succeeded']

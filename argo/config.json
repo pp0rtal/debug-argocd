@@ -1,6 +1,6 @@
 {
     "test": "value",
     "annotations": {
-        "notifications.argoproj.io/subscribe.sync-operation.github-ping-trello": ""
+        "notifications.argoproj.io/subscribe.sync-operation.github-platform-ping-trello": ""
     }
 }
