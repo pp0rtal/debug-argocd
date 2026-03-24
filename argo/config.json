@@ -3,5 +3,9 @@
         "notifications.argoproj.io/subscribe.sync-operation.github-platform-ping-trello": "",
         "360l.io/source-repo": "https://github.com/360Learning/platform",
         "360l.io/notification.trello-card": "69afcba6c155ecac391aee49"
+    },
+    "notifications": {
+        "source-repo": "https://github.com/360Learning/platform",
+        "trello-card": "69afcba6c155ecac391aee49"
     }
 }
