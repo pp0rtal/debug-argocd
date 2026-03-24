@@ -16,7 +16,7 @@ data:
       github-platform-ping-trello:
         method: POST
         body: |
-          { "event_type": "ping_trello", "client_payload": {{ toJson .app.status.operationState }} }
+          { "event_type": "ping_trello", "client_payload": {{ dict "metadata" .app.metadata "operationState" .app.status.operationState | toJson }} }
 
   trigger.sync-operation: |
     - when: app.status?.operationState?.phase in ['Succeeded']
