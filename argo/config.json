@@ -5,7 +5,7 @@
         "360l.io/notification.trello-card": "69afcba6c155ecac391aee49"
     },
     "notifications": {
-        "source-repo": "https://github.com/360Learning/platform",
-        "trello-card": "69afcba6c155ecac391aee49"
+        "sourceRepo": "https://github.com/360Learning/platform",
+        "trelloCard": "69afcba6c155ecac391aee49"
     }
 }
